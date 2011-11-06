@@ -199,6 +199,19 @@ function onWindowResize()
 	about.container.style.top = ((SCREEN_HEIGHT - about.container.offsetHeight) / 2) + 'px';
 }
 
+// display brush in bottom-left corner
+function brushResize(val){
+  context.save();
+  context.beginPath();
+  context.arc(SCREEN_WIDTH-(val/2)-10, SCREEN_HEIGHT-(val/2)-10, (val/2), 0, Math.PI*2, true); 
+  context.closePath();
+  context.fill();
+  context.fillStyle = 'rgb(' + BACKGROUND_COLOR[0] + ', ' + BACKGROUND_COLOR[1] + ', ' + BACKGROUND_COLOR[2] + ')';
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.restore();
+}
+
+
 function onWindowKeyDown( event )
 {
 	if (shiftKeyIsDown)
@@ -219,10 +232,12 @@ function onWindowKeyDown( event )
 			
 		case 68: // d
 			if(BRUSH_SIZE > 1) BRUSH_SIZE --;
+			brushResize(BRUSH_SIZE);
 			break;
 		
 		case 70: // f
 			BRUSH_SIZE ++;
+			brushResize(BRUSH_SIZE);
 			break;			
 	}
 }
