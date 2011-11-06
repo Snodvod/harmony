@@ -2,6 +2,11 @@ const REV = 6,
        BRUSHES = ["sketchy", "shaded", "chrome", "fur", "longfur", "web", "", "simple", "squares", "ribbon", "", "circles", "grid"],
        USER_AGENT = navigator.userAgent.toLowerCase();
 
+var IsiPhone = USER_AGENT.indexOf("iphone") != -1 ;
+var IsiPod = USER_AGENT.indexOf("ipod") != -1 ;
+var IsiPad = USER_AGENT.indexOf("ipad") != -1 ;
+var IsiPhoneOS = IsiPhone || IsiPad || IsiPod ;
+
 var SCREEN_WIDTH = window.innerWidth,
     SCREEN_HEIGHT = window.innerHeight,
     BRUSH_SIZE = 1,
@@ -36,7 +41,7 @@ function init()
 {
 	var hash, palette, embed, localStorageImage;
 	
-	if (USER_AGENT.search("android") > -1 || USER_AGENT.search("iphone") > -1)
+	if (USER_AGENT.search("android") > -1 || IsiPhone > -1)
 		BRUSH_SIZE = 2;	
 		
 	if (USER_AGENT.search("safari") > -1 && USER_AGENT.search("chrome") == -1) // Safari
@@ -166,6 +171,7 @@ function init()
 	document.addEventListener("dragenter", onDocumentDragEnter, false);  
 	document.addEventListener("dragover", onDocumentDragOver, false);
 	document.addEventListener("drop", onDocumentDrop, false);  
+	document.addEventListener("touchmove", onTouchMove, false);  
 	
 	canvas.addEventListener('mousedown', onCanvasMouseDown, false);
 	canvas.addEventListener('touchstart', onCanvasTouchStart, false);
@@ -297,6 +303,11 @@ function onDocumentDrop( event )
 	}	
 }
 
+// disable elastic scrolling
+function onTouchMove ( event )
+{
+  event.preventDefault();
+}
 
 // COLOR SELECTORS
 
