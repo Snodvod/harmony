@@ -1,5 +1,5 @@
 const REV = 6,
-       BRUSHES = ["sketchy", "shaded", "chrome", "fur", "longfur", "web", "", "simple", "squares", "ribbon", "", "circles", "grid"],
+       BRUSHES = ["sketchy", "shaded", "chrome", "fur", "longfur", "web", "", "simple", "squares", "ribbon", "", "stringy", "curvy", "", "circles", "grid"],
        USER_AGENT = navigator.userAgent.toLowerCase();
 
 var IsiPhone = USER_AGENT.indexOf("iphone") != -1 ;
@@ -201,14 +201,7 @@ function onWindowResize()
 
 // display brush in bottom-left corner
 function brushResize(val){
-  context.save();
-  context.beginPath();
-  context.arc(SCREEN_WIDTH-(val/2)-10, SCREEN_HEIGHT-(val/2)-10, (val/2), 0, Math.PI*2, true); 
-  context.closePath();
-  context.fill();
-  context.fillStyle = 'rgb(' + BACKGROUND_COLOR[0] + ', ' + BACKGROUND_COLOR[1] + ', ' + BACKGROUND_COLOR[2] + ')';
-  context.fillRect(0, 0, canvas.width, canvas.height);
-  context.restore();
+  // do nothing, for now
 }
 
 
