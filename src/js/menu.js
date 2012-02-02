@@ -83,6 +83,15 @@ Menu.prototype =
 		this.about.className = 'button';
 		this.about.innerHTML = 'About';
 		this.container.appendChild(this.about);
+
+		separator = document.createTextNode(" | ");
+		this.container.appendChild(separator);
+
+		this.brush = document.createElement("span"); //getElementById('save');
+		this.brush.className = 'button';
+		this.brush.innerHTML = BRUSH_SIZE;
+		this.brush.title ='brush size';
+		this.container.appendChild(this.brush);
 	},
 	
 	setForegroundColor: function( color )

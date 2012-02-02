@@ -201,7 +201,8 @@ function onWindowResize()
 
 // display brush in bottom-left corner
 function brushResize(val){
-  // do nothing, for now
+  // update size in menu
+  menu.brush.innerHTML = BRUSH_SIZE;
 }
 
 
