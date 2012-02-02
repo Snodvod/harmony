@@ -21,6 +21,7 @@ stringy.prototype = {
         this.context.strokeStyle = "rgba(" + COLOR[0] + ", " + COLOR[1] + ", " + COLOR[2] + ", 0.5)";
     },
     stroke: function (b, a) {
+        this.context.lineWidth = BRUSH_SIZE;
         var FACTOR = 10, 
             HISTORY = 15,
             sliced,

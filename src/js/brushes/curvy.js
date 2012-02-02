@@ -21,6 +21,7 @@ curvy.prototype = {
         this.context.strokeStyle = "rgba(" + COLOR[0] + ", " + COLOR[1] + ", " + COLOR[2] + ", 0.5)";
     },
     stroke: function (x,y) {
+        this.context.lineWidth = BRUSH_SIZE;
         var CTL_PNT1_DIST = 10, 
             CTL_PNT2_DIST = 20,
             START = 30,
